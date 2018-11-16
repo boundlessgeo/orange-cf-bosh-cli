@@ -29,7 +29,19 @@ node {
 
       stage('Create Login') {
         sh """
-          echo "cf login -a $CF_API_URL --skip-ssl-validation -u $CF_APPS_USER -p $CF_APPS_PASSWORD -o $CF_APPS_ORG" >> scripts/cf-login && cat scripts/cf-login
+          echo 'cf login -a $CF_API_URL --skip-ssl-validation -u $CF_APPS_USER -p $CF_APPS_PASSWORD -o $CF_APPS_ORG' >> scripts/cf-login && cat scripts/cf-login
+        """
+      }
+
+      stage('Build Container') {
+        sh """
+          docker build . -t quay.io/boundlessgeo/cf-tools:jenkins
+        """
+      }
+
+      stage('Push Container') {
+        sh """
+          docker push quay.io/boundlessgeo/cf-tools:jenkins
         """
       }
 
@@ -38,7 +50,7 @@ node {
 
       currentBuild.result = "FAILURE"
         throw err
-    } finally {
+    } finally 
       // Success or failure, always send notifications
       echo currentBuild.result
       notifyBuild(currentBuild.result)
