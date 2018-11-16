@@ -48,6 +48,12 @@ RUN echo "=====================================================" && \
   apt-get update && apt-get install -y --no-install-recommends yarn && apt-get upgrade -y && \
   apt-get autoremove -y && apt-get clean && apt-get purge && rm -fr /var/lib/apt/lists/* && \
   echo "=====================================================" && \
+  echo "=> Install Ops Man" && \
+  echo "=====================================================" && \
+  curl -sS https://raw.githubusercontent.com/starkandwayne/homebrew-cf/master/public.key | apt-key add - && echo "deb http://apt.starkandwayne.com stable main" >> /etc/apt/sources.list.d/starkandwayne.list &&\
+	apt-get update && \
+	apt-get install om && \
+  echo "=====================================================" && \
   echo "=> Install Ruby tools" && \
   echo "=====================================================" && \
   curl -sSL https://rvm.io/mpapis.asc | gpg --import - && \
@@ -119,12 +125,6 @@ RUN echo "=====================================================" && \
   echo "=====================================================" && \
   pip install --upgrade pip && \
   python -m pip install python-keystoneclient python-novaclient python-swiftclient python-neutronclient python-cinderclient python-glanceclient python-openstackclient && \
-  echo "=====================================================" && \
-  echo "=> Install Ops Man" && \
-  echo "=====================================================" && \
-  wget -q -O - https://raw.githubusercontent.com/starkandwayne/homebrew-cf/master/public.key | apt-key add - echo "deb http://apt.starkandwayne.com stable main" | tee /etc/apt/sources.list.d/starkandwayne.list &&\
-	apt-get update && \
-	apt-get install om && \
 	echo "=====================================================" && \
   echo "=> Cleanup docker image" && \
   echo "=====================================================" && \
