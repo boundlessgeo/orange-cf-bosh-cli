@@ -50,7 +50,7 @@ node {
 
       currentBuild.result = "FAILURE"
         throw err
-    } finally 
+    } finally {
       // Success or failure, always send notifications
       echo currentBuild.result
       notifyBuild(currentBuild.result)
