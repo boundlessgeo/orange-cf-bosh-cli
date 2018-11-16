@@ -35,7 +35,7 @@ node {
 
       stage('Build Container') {
         sh """
-          docker build . -t quay.io/boundlessgeo/cf-tools:jenkins
+          docker build . -t quay.io/boundlessgeo/cf-tools
         """
       }
 
