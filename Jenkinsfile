@@ -29,7 +29,7 @@ node {
 
       stage('Create Login') {
         sh """
-          echo 'cf login -a $CF_API_URL --skip-ssl-validation -u $CF_APPS_USER -p $CF_APPS_PASSWORD -o $CF_APPS_ORG' >> scripts/cf-login && cat scripts/cf-login
+          echo 'cf login -a $CF_API_URL --skip-ssl-validation -u $CF_APPS_USER -p $CF_APPS_PASSWORD -o $CF_APPS_ORG' > scripts/cf-login
         """
       }
 
