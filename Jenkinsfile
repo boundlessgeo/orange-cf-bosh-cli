@@ -7,7 +7,11 @@
 node {
   withCredentials([string(credentialsId: 'boundlessgeoadmin-token', variable: 'GITHUB_TOKEN'),
   string(credentialsId: 'sonar-jenkins-pipeline-token', variable: 'SONAR_TOKEN'),
-  string(credentialsId: 'QUAY_SECRET', variable: 'QUAY_SECRET')]) {
+  string(credentialsId: 'QUAY_SECRET', variable: 'QUAY_SECRET')
+  string(credentialsId: 'CF_API_URL' variable: 'CF_API_URL')
+  string(credentialsId: 'CF_APPS_USER' variable: 'CF_APPS_USER')
+  string(credentialsId: 'CF_APPS_PASSWORD' variable: 'CF_APPS_PASSWORD')
+  string(credentialsId: 'CF_APPS_ORG' variable: 'CF_APPS_ORG')]) {
 
     currentBuild.result = "SUCCESS"
 
