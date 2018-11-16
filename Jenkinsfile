@@ -41,7 +41,7 @@ node {
 
       stage('Push Container') {
         sh """
-          docker push quay.io/boundlessgeo/cf-tools:jenkins
+          docker push quay.io/boundlessgeo/cf-tools
         """
       }
 
