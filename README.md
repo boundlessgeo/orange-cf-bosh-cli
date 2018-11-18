@@ -1,51 +1,61 @@
 # Cloud Foundry Docker Bosh Cli [![Docker Automated build](docker_automated.svg)](https://hub.docker.com/r/orangecloudfoundry/orange-cf-bosh-cli/)
+
 The `cf-bosh-cli` project helps you to deploy bosh cli with tools through docker image:
 
 ### Programming packages
-* `ruby` - Ruby Programming Language (https://www.ruby-lang.org/)
-* `go` - Go Programming Language (https://golang.org/)
-* `node` - NodeJS Programming Language (https://nodejs.org/en/)
+
+- `ruby` - Ruby Programming Language (https://www.ruby-lang.org/)
+- `go` - Go Programming Language (https://golang.org/)
+- `node` - NodeJS Programming Language (https://nodejs.org/en/)
 
 ### Generic tools
-* `git` - Git client
-* `spruce` - YAML templating tool, for BOSH deployment manifests generation (https://github.com/geofffranks/spruce)
-* `jq` - JSON processing tool (https://stedolan.github.io/jq/)
-* `cerstrap` - Simple certificate manager (https://github.com/square/certstrap)
-* `yarn` - Package manager (https://yarnpkg.com/fr/)
+
+- `git` - Git client
+- `spruce` - YAML templating tool, for BOSH deployment manifests generation (https://github.com/geofffranks/spruce)
+- `jq` - JSON processing tool (https://stedolan.github.io/jq/)
+- `cerstrap` - Simple certificate manager (https://github.com/square/certstrap)
+- `yarn` - Package manager (https://yarnpkg.com/fr/)
 
 ### Bosh deployments tools
-* `bosh` - Bosh directors V2 CLI (https://bosh.io/docs/cli-v2.html)
-* `bosh-gen` - Generators for BOSH releases creation (https://github.com/cloudfoundry-community/bosh-gen)
-* `cf` - Cloud Foundry CLI (https://github.com/cloudfoundry/cli)
-* `uaac` - Cloud Foundry UAA CLI (https://github.com/cloudfoundry/cf-uaac)
-* `uaa` - UAA CLI go (https://github.com/starkandwayne/uaa-cli-releases)
-* `credhub` - Credhub CLI (https://github.com/cloudfoundry-incubator/credhub-cli)
-* `fly` - Concourse CLI (https://github.com/concourse/fly)
-* `terraform` - Provides a common configuration to launch infrastructure (https://www.terraform.io/)
-* `terraform-provider-cloudfoundry` - Terraform plugin for Cloudfoundry (https://github.com/orange-cloudfoundry/terraform-provider-cloudfoundry)
+
+- `bosh` - Bosh directors V2 CLI (https://bosh.io/docs/cli-v2.html)
+- `bosh-gen` - Generators for BOSH releases creation (https://github.com/cloudfoundry-community/bosh-gen)
+- `cf` - Cloud Foundry CLI (https://github.com/cloudfoundry/cli)
+- `uaac` - Cloud Foundry UAA CLI (https://github.com/cloudfoundry/cf-uaac)
+- `uaa` - UAA CLI go (https://github.com/starkandwayne/uaa-cli-releases)
+- `credhub` - Credhub CLI (https://github.com/cloudfoundry-incubator/credhub-cli)
+- `fly` - Concourse CLI (https://github.com/concourse/fly)
+- `terraform` - Provides a common configuration to launch infrastructure (https://www.terraform.io/)
+- `terraform-provider-cloudfoundry` - Terraform plugin for Cloudfoundry (https://github.com/orange-cloudfoundry/terraform-provider-cloudfoundry)
+- `om` - Ops Manager CLI (https://github.com/pivotal-cf/om)
 
 ### Backup and Storage tools
-* `shield` - Shield CLI (https://docs.pivotal.io/partners/starkandwayne-shield/)
-* `bbr` - Bosh Backup and Restore CLI (http://docs.cloudfoundry.org/bbr/)
-* `gof3r` - Client for fast, parallelized and pipelined streaming access to S3 bucket (https://github.com/rlmcpherson/s3gof3r)
-* `mc` - Minio S3 CLI (https://github.com/minio/mc)
+
+- `shield` - Shield CLI (https://docs.pivotal.io/partners/starkandwayne-shield/)
+- `bbr` - Bosh Backup and Restore CLI (http://docs.cloudfoundry.org/bbr/)
+- `gof3r` - Client for fast, parallelized and pipelined streaming access to S3 bucket (https://github.com/rlmcpherson/s3gof3r)
+- `mc` - Minio S3 CLI (https://github.com/minio/mc)
 
 ### Kubernetes tools
-* `kubectl` - Kubernetes CLI (https://kubernetes.io/docs/reference/generated/kubectl/overview/)
-* `helm` - Kubernetes Package Manager (https://docs.helm.sh/)
+
+- `kubectl` - Kubernetes CLI (https://kubernetes.io/docs/reference/generated/kubectl/overview/)
+- `helm` - Kubernetes Package Manager (https://docs.helm.sh/)
 
 ### BDD tools
-* `mysqlsh` - MySQL shell CLI (https://dev.mysql.com/doc/mysql-shell-excerpt/5.7/en/)
-* `mongo` - MongoDB shell CLI (https://docs.mongodb.com/manual/mongo/)
+
+- `mysqlsh` - MySQL shell CLI (https://dev.mysql.com/doc/mysql-shell-excerpt/5.7/en/)
+- `mongo` - MongoDB shell CLI (https://docs.mongodb.com/manual/mongo/)
 
 The container expose ssh port. Password or key (rsa only) authentication is supported.
 
 ## How to get it or build it ?
 
 ### How to get it ?
+
 Pull the image from docker hub: <code>docker pull orangecloudfoundry/orange-cf-bosh-cli</code>
 
 ### How to build it ?
+
 First, clone this repository: <code>git clone https://github.com/orange-cloudfoundry/orange-cf-bosh-cli.git</code>
 
 Then, build the image: <code>docker build -t cf-bosh-cli .</code>
@@ -55,6 +65,7 @@ Then, build the image: <code>docker build -t cf-bosh-cli .</code>
 ### How to use as standalone container (if you have a simple docker host)
 
 #### Without public ssh key provided to the container
+
 Launch the image. Don't miss to assign an host port to the container ssh port (22) :
 <code>docker run --name cf-bosh-cli -d -p 2222:22 -v /home/bosh -v /data orangecloudfoundry/orange-cf-bosh-cli</code>
 
@@ -63,6 +74,7 @@ Then, log into the container with ssh : <code>ssh -p 2222 bosh@127.0.0.1</code>
 The password at first logon is "welcome" (you have to change your password). When you are logged into the container, you must add your ssh public key into the file <code>~/.ssh/authorized_keys</code> (RSA format). This last step will make the container secure after each restart/update (password auth will be disabled).
 
 #### With public ssh key provided to the container
+
 It's also possible to add your public key to the container threw an environment variable.
 
 Launch the image. Don't miss to assign an host port to the container ssh port (22) :
@@ -73,15 +85,18 @@ Then, log into the container with ssh : <code>ssh -p 2222 -i <path to your rsa p
 The password in this case is completely disabled. By default, the file containing the public key <code>~/.ssh/authorized_keys</code> is overwrited after container restart or update. By setting the variable <code>SSH_PUBLIC_KEY_DONT_OVERWRITE=true</code>, this file is not overwrited if it already exists and is not empty.
 
 ### How to use it using "Docker Bosh Release"
+
 Another option is to deploy the container threw the "Docker Bosh Release" (https://github.com/cloudfoundry-community/docker-boshrelease).
 
 In the following example:
-* We deploy 1 instance of the container.
-* The homedirectory of the bosh account is a private docker volume.
-* The directory /data is a shared docker volume (from the container called "data_container").
-* The first container has a provided public key.
+
+- We deploy 1 instance of the container.
+- The homedirectory of the bosh account is a private docker volume.
+- The directory /data is a shared docker volume (from the container called "data_container").
+- The first container has a provided public key.
 
 Example of bosh deployment manifest:
+
 ```
 <%
 director_uuid = 'fa2a0823-b875-4fe3-9bf1-3de6a9bdddb8'
