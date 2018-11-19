@@ -139,7 +139,13 @@ RUN echo "=====================================================" && \
 #--- Provide tools information on system banner, setup profile
 ADD scripts/profile /home/${CONTAINER_LOGIN}/.profile
 ADD scripts/motd /etc/
+
+#--- Cloud Foundry Login
 ADD scripts/cf-login /home/${CONTAINER_LOGIN}/cf-login
+
+#--- Add SSH Key for cf-bs-broker
+ADD scripts/id_rsa_cf_bs /home/${CONTAINER_LOGIN}/.ssh/id_rsa_cf_bs
+RUN chmod 600 /home/${CONTAINER_LOGIN}/.ssh/id_rsa_cf_bs
 
 RUN echo "=====================================================" && \
   echo "=> Setup user profile and system banner" && \

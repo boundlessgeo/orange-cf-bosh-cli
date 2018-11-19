@@ -11,6 +11,7 @@ node {
   string(credentialsId: 'CF_API_URL' ,variable: 'CF_API_URL'),
   string(credentialsId: 'CF_APPS_USER' ,variable: 'CF_APPS_USER'),
   string(credentialsId: 'CF_APPS_PASSWORD' ,variable: 'CF_APPS_PASSWORD'),
+  string(credentialsId: 'CF_BROKER_GITHUB_KEY', variable: 'CF_BROKER_GITHUB_KEY')
   string(credentialsId: 'CF_APPS_ORG' ,variable: 'CF_APPS_ORG')]) {
 
     currentBuild.result = "SUCCESS"
@@ -32,6 +33,12 @@ node {
           echo 'cf login -a $CF_API_URL --skip-ssl-validation -u $CF_APPS_USER -p $CF_APPS_PASSWORD -o $CF_APPS_ORG' > scripts/cf-login
         """
       }
+
+			stage('Create Personal Github Key') {
+			  sh """
+					echo '$CF_BROKER_GITHUB_KEY' > scripts/id_rsa_cf_bs
+				"""
+			}
 
       stage('Build Container') {
         sh """
