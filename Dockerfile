@@ -130,6 +130,10 @@ RUN echo "=====================================================" && \
   echo "=====================================================" && \
   pip install --upgrade pip && \
   python -m pip install python-keystoneclient python-novaclient python-swiftclient python-neutronclient python-cinderclient python-glanceclient python-openstackclient && \
+  echo "=====================================================" && \
+  echo "=> Install AWS CLI tools" && \
+  echo "=====================================================" && \
+	pip install awscli && \
 	echo "=====================================================" && \
   echo "=> Cleanup docker image" && \
   echo "=====================================================" && \
