@@ -11,7 +11,7 @@ node {
   string(credentialsId: 'CF_API_URL' ,variable: 'CF_API_URL'),
   string(credentialsId: 'CF_APPS_USER' ,variable: 'CF_APPS_USER'),
   string(credentialsId: 'CF_APPS_PASSWORD' ,variable: 'CF_APPS_PASSWORD'),
-  string(credentialsId: 'CF_BROKER_GITHUB_KEY', variable: 'CF_BROKER_GITHUB_KEY')
+  string(credentialsId: 'CF_BROKER_GITHUB_KEY', variable: 'CF_BROKER_GITHUB_KEY'),
   string(credentialsId: 'CF_APPS_ORG' ,variable: 'CF_APPS_ORG')]) {
 
     currentBuild.result = "SUCCESS"
