@@ -54,6 +54,11 @@ RUN echo "=====================================================" && \
 	apt-get update && \
 	apt-get install om && \
   echo "=====================================================" && \
+  echo "=> Install PCF Tile CLI" && \
+  echo "=====================================================" && \
+	curl -sS https://s3.amazonaws.com/boundless-cloudfoundry/tile/tile_linux > /usr/local/bin/tile && \
+	chmod +x /usr/local/bin/tile && \
+  echo "=====================================================" && \
   echo "=> Install Ruby tools" && \
   echo "=====================================================" && \
   curl -sSL https://rvm.io/mpapis.asc | gpg --import - && \
