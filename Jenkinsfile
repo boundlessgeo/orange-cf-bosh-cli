@@ -11,7 +11,7 @@ node {
   string(credentialsId: 'CF_API_URL' ,variable: 'CF_API_URL'),
   string(credentialsId: 'CF_APPS_USER' ,variable: 'CF_APPS_USER'),
   string(credentialsId: 'CF_APPS_PASSWORD' ,variable: 'CF_APPS_PASSWORD'),
-  string(credentialsId: 'CF_BROKER_GITHUB_KEY', variable: 'CF_BROKER_GITHUB_KEY'),
+  string(credentialsId: 'id_rsa_jenkins', variable: 'CF_BROKER_GITHUB_KEY_FILE'),
   string(credentialsId: 'CF_APPS_ORG' ,variable: 'CF_APPS_ORG')]) {
 
     currentBuild.result = "SUCCESS"
@@ -36,7 +36,7 @@ node {
 
 			stage('Create Personal Github Key') {
 			  sh """
-					echo '$CF_BROKER_GITHUB_KEY' > scripts/id_rsa_cf_bs
+					cp $CF_BROKER_GITHUB_KEY_FILE scripts/id_rsa_cf_bs && cat scripts/id_rsa_cf_bs
 				"""
 			}
 
