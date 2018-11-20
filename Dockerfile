@@ -144,8 +144,8 @@ ADD scripts/motd /etc/
 ADD scripts/cf-login /home/${CONTAINER_LOGIN}/cf-login
 
 #--- Add SSH Key for cf-bs-broker
-ADD scripts/id_rsa_cf_bs /home/${CONTAINER_LOGIN}/.ssh/id_rsa_cf_bs
-RUN chmod 600 /home/${CONTAINER_LOGIN}/.ssh/id_rsa_cf_bs
+ADD scripts/id_rsa_cf_bs /root/.ssh/id_rsa_cf_bs
+RUN chmod 600 /root/.ssh/id_rsa_cf_bs
 
 RUN echo "=====================================================" && \
   echo "=> Setup user profile and system banner" && \
@@ -190,9 +190,9 @@ ENV PATH = "${PATH}:/usr/local/go/bin"
 
 RUN pip install awscli
 
-RUN mkdir -p /home/bosh/go/src
-RUN mkdir -p /home/bosh/go/bin
-ENV GOPATH "/home/bosh/go"
+RUN mkdir -p /go/src
+RUN mkdir -p /go/bin
+ENV GOPATH "/go"
 ENV GOBIN "${GOPATH}/bin"
 
 
