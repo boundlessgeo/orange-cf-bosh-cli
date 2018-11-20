@@ -61,6 +61,7 @@ node {
         throw err
     } finally {
       // Success or failure, always send notifications
+      cleanWs()
       echo currentBuild.result
       notifyBuild(currentBuild.result)
     }
