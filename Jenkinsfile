@@ -36,7 +36,7 @@ node {
 
 			stage('Create Personal Github Key') {
 			  sh """
-					cp $CF_BROKER_GITHUB_KEY_FILE scripts/id_rsa_cf_bs && cat scripts/id_rsa_cf_bs
+					cp $CF_BROKER_GITHUB_KEY_FILE scripts/id_rsa_cf_bs
 				"""
 			}
 
