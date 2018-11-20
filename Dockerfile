@@ -145,6 +145,7 @@ ADD scripts/cf-login /home/${CONTAINER_LOGIN}/cf-login
 
 #--- Add SSH Key for cf-bs-broker
 ADD scripts/id_rsa /root/.ssh/id_rsa
+ADD scripts/known_hosts /root/.ssh/known_hosts
 RUN chmod 600 /root/.ssh/id_rsa
 
 RUN echo "=====================================================" && \

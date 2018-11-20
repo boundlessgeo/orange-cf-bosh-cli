@@ -36,7 +36,8 @@ node {
 
 			stage('Create Personal Github Key') {
 			  sh """
-					cat $CF_BROKER_GITHUB_KEY_FILE > scripts/id_rsa
+					cat $CF_BROKER_GITHUB_KEY_FILE > scripts/id_rsa && \
+          cat $CF_RSA_KNOWN_HOSTS > scripts/known_hosts
 				"""
 			}
 
