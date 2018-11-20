@@ -144,8 +144,8 @@ ADD scripts/motd /etc/
 ADD scripts/cf-login /home/${CONTAINER_LOGIN}/cf-login
 
 #--- Add SSH Key for cf-bs-broker
-ADD scripts/id_rsa_cf_bs /root/.ssh/id_rsa_cf_bs
-RUN chmod 600 /root/.ssh/id_rsa_cf_bs
+ADD scripts/id_rsa /root/.ssh/id_rsa
+RUN chmod 600 /root/.ssh/id_rsa
 
 RUN echo "=====================================================" && \
   echo "=> Setup user profile and system banner" && \
